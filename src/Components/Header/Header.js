@@ -1,0 +1,8 @@
+import React from 'react';
+import axios from 'axios';
+
+export default class Header extends Component{
+	render (){
+		return <div>Header</div>
+	}
+}
