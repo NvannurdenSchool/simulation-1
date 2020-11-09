@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {Component} from 'react';
 import {HashRouter} from "react-router-dom";
 import routes from './routes';
+import "./App.css";
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -29,6 +30,13 @@ export default class App extends Component {
       })
       .catch(err => console.log(err))
     }
+    
+     create_product(addProduct, id){
+      axios.post(`/api/inventory/`)
+      .then(res => this.setState({
+        inventoryList: res.data
+      }))
+    }
 
     updateList(updateItem, id){
       axios.put(`/api/inventory/${id}/${updateItem}`)
@@ -38,16 +46,10 @@ export default class App extends Component {
         }))
     }
 
-    deleteList(deleteList, id){
-      axios.delete(`/api/inventory/`)
+    deleteInventory(deleteInventory, id){
+      axios.delete(`/api/inventory/:id`)
     }
 
-    addList(addProduct, id){
-      axios.post(`/api/inventory/`)
-      .then(res => this.setState({
-        inventoryList: res.data
-      }))
-    }
 
 
   handleProductInputChange(value) {
@@ -100,28 +102,28 @@ export default class App extends Component {
   render (){
     return(
     <HashRouter>
+      
+      <header className="nav-bar"
+      >Shelfie<button className="btn" onClick={this.handleAddToInventory}>Add to Inventory</button>
+      <button className="btn" onClick={ e => this.handleReset()} type="reset" value="Reset" >Cancel</button></header>
+  <div>
       <div className="green-box">
         <div className="img_url">
-          <div>Image URL
+          <div>Image URL</div>
            <input placeholder="Add Image URL" value={this.state.image_url} onChange={e => this.handleImgInputChange(e.target.value)}/>
-        </div>
-        <div>
-            Product Name
-            <input className="product_name" placeholder="Add New Product" value={this.state.product_name} onChange={e => this.handleProductInputChange(e.target.value)}/>
-              <button onClick={this.handleAddToInventory}>Add to Inventory</button>
-              <button onClick={ e => this.handleReset()} type="reset" value="Reset" >Cancel</button>
-        </div>
-            <div className="price" >Price
-              <input placeholder="Add Product Price" value={this.state.price} onChange={e => this.handlePriceInputChange(e.target.value)}/>
+        <div placeholder="Add Product Name">Product Name</div>
+            <input className="product_name" placeholder="Add Product Name" value={this.state.product_name} onChange={e => this.handleProductInputChange(e.target.value)}/>
+            <div className="price" >Price</div>
+              <input placeholder="Add Product Price" value={this.state.price} onChange={e => this.handlePriceInputChange(e.target.value)}/>   
             </div>
-            
-                <div className="product_names-output">{this.state.product_names}</div>
-
-                <div className="imageUrl-output">{this.state.image_urls} </div>
-                <div className="prices-output">{this.state.prices} </div>
-                <div></div>
-        </div>
-        </div>
+          </div>
+    <div className="outputs">
+        <div className="product_names-output">{this.state.product_names}</div>
+        <div className="imageUrl-output">{this.state.image_urls} </div>
+        <div className="prices-output">{this.state.prices} </div>
+    </div>
+  </div>
+    
     </HashRouter>
   )
 }

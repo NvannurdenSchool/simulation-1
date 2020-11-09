@@ -37,24 +37,34 @@
   }
 }
 
-.price {
-  box-sizing: border-box 2px black solid;
-  margin: auto 50px;
-  position: relative;
-}
-
-.img_url {
-  box-sizing: border-box 10px black
-  solid;
-}
 
 .green-box {
-  box-sizing: border-box 100% black solid;
-  height: 100%;
-  width: 100%;
+  height: 350px;
+  width: 300px;
   background-color: #3AD886;
-  border: 10px solid black;
+  border: 5px solid black;
+  align-content: center;
+  position: relative;
+  align-items: flex-end;
+  display: flex;
+  vertical-align: middle;
+  margin-top: 50px;
+  margin-left: 350px;
 }
-.product_names{
-  display: block;
+
+.outputs {
+  height: 175px;
+  width: 300px;
+  background-color: #d34735;
+  margin-top: -358px;
+}
+
+.nav-bar {
+  height: 50px;
+  width: 100%;
+  background-color: #ab2a19;
+}
+
+.btn {
+  margin-left: 20px;
 }
