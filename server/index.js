@@ -8,14 +8,19 @@ const {SERVER_PORT, CONNECTION_STRING} = process.env;
 massive({
 	connectionString: CONNECTION_STRING,
 	ssl: {rejectUnauthorized: false}
-})
-		.then(db => {
-			app.set("db", db);
+	})
+		.then(dbInstance => {
+			app.set("db", dbInstance);
 		})
 		.catch(err => console.log(err));
+	
+	app.use(express.json());
+	
+	app.listen(SERVER_PORT, () => {
+		console.log(`Server listening on port ${SERVER_PORT}.`);
+	});
 
-app.use(express.json());
-
-app.listen(SERVER_PORT, () => {
-	console.log(`server listening on ${SERVER_PORT} `)
-})
+app.get('/api/inventory', ctrl.getInventory)
+app.post('/api/inventory', ctrl.create)
+app.put('/api/inventory/:id', ctrl.update)
+app.delete('/api/inventory/:id', ctrl.delete)

@@ -1,13 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 import Product from "../Product/Product";
 
-export default class Dashboard extends Component{
-	render (){
-		
-		return(
-			<div>Product</div>
-			<div>Product</div>
-		)
-		}
+
+const inventory = {
+	product_names: this.props.product_names,
+	image_urls: this.props.image_url,
+	prices: this.props.prices
 }
+
+export default class Dashboard extends Component {
+  render() {
+	return <p>{inventory}</p>
+  }
+};

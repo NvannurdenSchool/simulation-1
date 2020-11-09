@@ -1,8 +1,8 @@
-import React from 'react';
-import axios from 'axios';
+import React, {Component} from 'react';
 
-export default class Product extends Component{
-	render (){
-		return <div>Product</div>
-	}
+
+export default class Product extends Component {
+  render() {
+    return <p>{this.props.task}</p>;
+  }
 }

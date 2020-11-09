@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.price {
+  box-sizing: border-box 2px black solid;
+  margin: auto 50px;
+  position: relative;
+}
+
+.img_url {
+  box-sizing: border-box 10px black
+  solid;
+}
+
+.green-box {
+  box-sizing: border-box 100% black solid;
+  height: 100%;
+  width: 100%;
+  background-color: #3AD886;
+  border: 10px solid black;
+}
+.product_names{
+  display: block;
+}
